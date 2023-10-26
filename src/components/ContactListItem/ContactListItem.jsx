@@ -3,6 +3,14 @@ import css from './ContactListItem.module.css';
 
 export default class ContactListItem extends Component {
   render() {
-    return <div>ContactListItem</div>;
+    const { contact } = this.props;
+    return (
+      <div>
+        <p>
+          {contact.name}: <span>{contact.number}</span>
+        </p>
+        <button>Delete</button>
+      </div>
+    );
   }
 }
