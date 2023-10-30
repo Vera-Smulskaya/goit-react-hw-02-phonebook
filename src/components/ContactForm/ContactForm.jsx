@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Title from '../Title/Title';
 import css from './ContactForm.module.css';
 
 export default class ContactForm extends Component {
   render() {
     return (
       <div>
-        <h2>Contact Form</h2>
+       
+       <Title>Contact Form</Title>
         <form>
           <label>
             <p>Name: </p>
@@ -15,6 +17,7 @@ export default class ContactForm extends Component {
             <p>Number: </p>
             <input type="number"></input>
           </label>
+          <button type="button">Add contact</button>
         </form>
       </div>
     );
