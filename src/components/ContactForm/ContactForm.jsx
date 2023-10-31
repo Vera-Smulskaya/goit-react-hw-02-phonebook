@@ -5,19 +5,18 @@ import css from './ContactForm.module.css';
 export default class ContactForm extends Component {
   render() {
     return (
-      <div>
-       
-       <Title>Contact Form</Title>
-        <form>
-          <label>
-            <p>Name: </p>
-            <input type="text"></input>
+      <div className={css.formContainer}>
+        <Title>Contact Form</Title>
+        <form className={css.form}>
+          <label className={css.formLabel}>
+            <p  className={css.formLabelText}>Name: </p>
+            <input type="text" className={css.formInput}></input>
           </label>
           <label>
-            <p>Number: </p>
-            <input type="number"></input>
+            <p className={css.formLabelText}>Number: </p>
+            <input type="number"  className={css.formInput}></input>
           </label>
-          <button type="button">Add contact</button>
+          <button type="button" className={css.formButton}>Add contact</button>
         </form>
       </div>
     );
