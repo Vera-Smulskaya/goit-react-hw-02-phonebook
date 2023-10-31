@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import Section from './Section/Section';
 import Title from './Title/Title';
 
 const idN = nanoid();
@@ -23,11 +24,14 @@ export class App extends Component {
     const { contacts, filter } = this.state;
     return (
       <div>
-        <h1>Phonebook</h1>
-        <ContactForm />
-
-        <Filter />
-        <ContactList contacts={contacts} />
+        <Section>
+          <Title>Phonebook</Title>
+            <ContactForm />
+        </Section>
+        <Section>
+          <Filter />
+          <ContactList contacts={contacts} />
+        </Section>
       </div>
     );
   }
