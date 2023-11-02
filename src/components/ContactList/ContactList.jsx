@@ -7,7 +7,7 @@ export default class ContactList extends Component {
   render() {
     const { contacts } = this.props;
     return (
-      <div>
+      <div className={css.contactListContainer}>
          <Title>Contacts</Title>
         {contacts.map(contact => (
           <ContactListItem contact={contact} key={contact.id} />
