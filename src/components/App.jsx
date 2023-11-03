@@ -6,9 +6,6 @@ import Filter from './Filter/Filter';
 import Section from './Section/Section';
 import Title from './Title/Title';
 
-const idN = nanoid();
-console.log(idN);
-
 export class App extends Component {
   state = {
     contacts: [
@@ -20,13 +17,37 @@ export class App extends Component {
     filter: '',
   };
 
+  // state = {
+  //   contacts: contactData,
+  //   filter: '',
+  // };
+
+
+handleAddContact = (contactData) => {
+ const hasDuplicates = this.state.contacts.some((contact) => contact.name === contactData.name);
+
+  if(hasDuplicates) {
+    alert(`Contact with name ${contactData.name} already exists`) 
+    return;
+  }
+
+  const finalContact = {
+    ...contactData,
+    id: nanoid(),
+  }
+
+  this.setState({ contacts: [...this.state.contacts, finalContact]})
+  // this.setState((prevState) => ({ contacts: [...prevState.contacts, finalContact]}) )
+
+}
+
   render() {
     const { contacts, filter } = this.state;
     return (
       <div>
         <Section>
           <Title>Phonebook</Title>
-            <ContactForm />
+            <ContactForm handleFormContact={this.handleAddContact}/>
         </Section>
         <Section>
           <Filter />
