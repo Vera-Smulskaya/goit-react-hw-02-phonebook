@@ -17,13 +17,7 @@ export class App extends Component {
     filter: '',
   };
 
-  // state = {
-  //   contacts: contactData,
-  //   filter: '',
-  // };
-
-
-handleAddContact = (contactData) => {
+  handleAddContact = (contactData) => {
  const hasDuplicates = this.state.contacts.some((contact) => contact.name === contactData.name);
 
   if(hasDuplicates) {
@@ -37,8 +31,11 @@ handleAddContact = (contactData) => {
   }
 
   this.setState({ contacts: [...this.state.contacts, finalContact]})
-  // this.setState((prevState) => ({ contacts: [...prevState.contacts, finalContact]}) )
+}
 
+onFilter = (contactName) => {
+  const filteredContacts = [...this.state.contacts]
+  filteredContacts.filter(contact => {contact.toLowerCase().includes(contactName.toLowerCase())})
 }
 
   render() {
@@ -50,7 +47,7 @@ handleAddContact = (contactData) => {
             <ContactForm handleFormContact={this.handleAddContact}/>
         </Section>
         <Section>
-          <Filter />
+          <Filter value={filter} onChange={this.onFilter}/>
           <ContactList contacts={contacts} />
         </Section>
       </div>

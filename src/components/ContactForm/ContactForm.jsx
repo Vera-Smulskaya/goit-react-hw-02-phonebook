@@ -10,13 +10,14 @@ state = {
 
 handleSubmit = event => {
   event.preventDefault();
-
+  
   const contactData = {
     name: this.state.name,
-    number: Number.parseFloat(this.state.number),
+    number: this.state.number,
   }
 
   this.props.handleFormContact(contactData);
+  this.setState({ name: "", number: "" });
  }
 
 handleInputChange = event => {
