@@ -33,13 +33,23 @@ export class App extends Component {
   this.setState({ contacts: [...this.state.contacts, finalContact]})
 }
 
-onFilter = (contactName) => {
-  const filteredContacts = [...this.state.contacts]
-  filteredContacts.filter(contact => {contact.toLowerCase().includes(contactName.toLowerCase())})
+onFilter = (event) => {
+   this.setState({ filter: event.target.value });
+ }
+
+filterContacts = () => {
+  const { contacts, filter } = this.state;
+  return  contacts.filter(contact => {
+    return contact.name.toLowerCase().includes(filter.toLowerCase())
+   })
+   
 }
 
+
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
+const contacts = filter ? this.filterContacts() : this.state.contacts;
+
     return (
       <div>
         <Section>
