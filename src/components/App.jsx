@@ -18,7 +18,7 @@ export class App extends Component {
   };
 
   handleAddContact = (contactData) => {
- const hasDuplicates = this.state.contacts.some((contact) => contact.name === contactData.name);
+ const hasDuplicates = this.state.contacts.some((contact) => contact.name.toLowerCase() === contactData.name.toLowerCase());
 
   if(hasDuplicates) {
     alert(`Contact with name ${contactData.name} already exists`) 
